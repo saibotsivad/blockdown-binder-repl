@@ -1,4 +1,5 @@
-import App from './App.svelte'
+import FileMenu from './FileMenu.svelte'
+// import FileExplorer from './file-explorer/FileExplorer.svelte'
 import { DIRECTORY, FILE } from './types.js'
 import { fileCodeO } from 'svelte-awesome/icons'
 
@@ -36,29 +37,29 @@ let files = [
 		]
 	},
 	// directory with lazy loaded files
-	// {
-	// 	type: DIRECTORY,
-	// 	name: 'dir-with-lazy-loaded-files',
-	// 	children: async () => new Promise(resolve => {
-	// 		setTimeout(() => {
-	// 			countGood++
-	// 			resolve([
-	// 				{
-	// 					type: FILE,
-	// 					name: 'file-4.txt'
-	// 				},
-	// 				{
-	// 					type: FILE,
-	// 					name: 'file-5.txt'
-	// 				},
-	// 				{
-	// 					type: FILE,
-	// 					name: `count-${countGood}.txt`
-	// 				}
-	// 			])
-	// 		}, 100)
-	// 	})
-	// },
+	{
+		type: DIRECTORY,
+		name: 'dir-with-lazy-loaded-files',
+		children: async () => new Promise(resolve => {
+			setTimeout(() => {
+				countGood++
+				resolve([
+					{
+						type: FILE,
+						name: 'file-4.txt'
+					},
+					{
+						type: FILE,
+						name: 'file-5.txt'
+					},
+					{
+						type: FILE,
+						name: `count-${countGood}.txt`
+					}
+				])
+			}, 100)
+		})
+	},
 	// lazy load but with errors
 	{
 		type: DIRECTORY,
@@ -78,44 +79,44 @@ let files = [
 		})
 	},
 	// directory with children
-	// {
-	// 	type: DIRECTORY,
-	// 	name: 'dir-with-children',
-	// 	children: [
-	// 		{
-	// 			type: DIRECTORY,
-	// 			name: 'child-1',
-	// 			children: [
-	// 				{
-	// 					type: FILE,
-	// 					name: 'file-6.txt'
-	// 				},
-	// 				{
-	// 					type: FILE,
-	// 					name: 'file-7.txt'
-	// 				}
-	// 			]
-	// 		},
-	// 		{
-	// 			type: DIRECTORY,
-	// 			name: 'child-2',
-	// 			children: [
-	// 				{
-	// 					type: FILE,
-	// 					name: 'file-8.txt'
-	// 				},
-	// 				{
-	// 					type: FILE,
-	// 					name: 'file-9.txt'
-	// 				}
-	// 			]
-	// 		},
-	// 		{
-	// 			type: FILE,
-	// 			name: 'file-10.txt'
-	// 		}
-	// 	]
-	// },
+	{
+		type: DIRECTORY,
+		name: 'dir-with-children',
+		children: [
+			{
+				type: DIRECTORY,
+				name: 'child-1',
+				children: [
+					{
+						type: FILE,
+						name: 'file-6.txt'
+					},
+					{
+						type: FILE,
+						name: 'file-7.txt'
+					}
+				]
+			},
+			{
+				type: DIRECTORY,
+				name: 'child-2',
+				children: [
+					{
+						type: FILE,
+						name: 'file-8.txt'
+					},
+					{
+						type: FILE,
+						name: 'file-9.txt'
+					}
+				]
+			},
+			{
+				type: FILE,
+				name: 'file-10.txt'
+			}
+		]
+	},
 ]
 
 // provide your own custom file icon mapper function
@@ -131,7 +132,7 @@ const icons = extension => {
 // "selected" is the full path+file of the selected file
 const selected = 'dir-with-files-loaded/file-2.css'
 
-const app = new App({
+const app = new FileMenu({
 	target: document.body,
 	props: {
 		expanded,
