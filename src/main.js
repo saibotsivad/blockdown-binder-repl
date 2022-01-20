@@ -1,5 +1,4 @@
 import FileMenu from './FileMenu.svelte'
-// import FileExplorer from './file-explorer/FileExplorer.svelte'
 import { DIRECTORY, FILE } from './types.js'
 import { fileCodeO } from 'svelte-awesome/icons'
 

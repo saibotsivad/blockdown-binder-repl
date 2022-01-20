@@ -3,7 +3,7 @@
 	import File from './File.svelte'
 	import Loading from './Loading.svelte'
 	import Error from './Error.svelte'
-	import { DIRECTORY, FILE } from './types.js'
+	import { DIRECTORY, FILE } from '../types.js'
 
 	export let files = []
 	export let icons
@@ -33,6 +33,10 @@
 			open(index)
 		})
 	}
+
+	const hello = event => {
+		console.log('-----hi!-------', event)
+	}
 </script>
 
 <ul>
@@ -51,6 +55,7 @@
 					{ icons }
 					{ selected }
 					name={ file.name }
+					on:click={ hello }
 				/>
 			{/if}
 

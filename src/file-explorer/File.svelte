@@ -3,6 +3,7 @@
 	import { file } from 'svelte-awesome/icons'
 
 	export let name = ''
+	export let selected = false
 	export let icons
 
 	$: extension = name && name.split('.').pop()
@@ -18,7 +19,7 @@
 </style>
 
 <div>
-	<button>
+	<button class:selected on:click>
 		<Icon data={ icons && icons(extension) || file } />
 		{ name }
 	</button>

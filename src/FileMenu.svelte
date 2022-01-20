@@ -1,10 +1,18 @@
+<script>
+	import FileExplorer from './file-explorer/FileExplorer.svelte'
+
+	export let files
+</script>
+
 <style>
 	div.main {
 		display: flex;
-		min-height: 100%;
+		min-height: 100vh;
 	}
 	div.menu {
 		min-height: 100%;
+		min-width: 20%;
+		white-space: nowrap;
 		/* TODO REMOVE */
 		background-color: yellow;
 	}
@@ -18,9 +26,11 @@
 
 <div class="main">
 	<div class="menu">
-		abcd abcd abcd abcd abcdx
+		<FileExplorer
+			{ files }
+		/>
 	</div>
 	<div class="content">
-		content
+		<p>yolo</p>
 	</div>
 </div>
